@@ -1,0 +1,68 @@
+<script>
+    /*Descripción
+
+    En el juego de casino de BlackJack el jugador puede sacarle ventaja a la casa llevando un registro del número relativo de cartas altas y bajas que quedan en la baraja. A esto le llaman CONTEO DE CARTAS. Tener más cartas altas en la baraja es una ventaja para el jugador. Se le asigna un valor a cada carta de acuerdo a la siguiente tabla.
+
+    Si el conteo es positivo, el jugador debería apostar alto, si el conteo es negativo o cero, el jugador debería apostar bajo.
+
+    Cambio de Conteo            Cartas
+    -----------------------------------
+    +1                          2, 3, 4, 5, 6
+    0                           7, 8, 9
+    -1                          10, J, Q, K, A
+
+    Nuestra meta es desarrollar una función para contar cartas.
+
+    La función debe tomar un parámetro CARTA que puede ser un número o una cadena de caracteres y luego aumentar o reducir el valor de la variable global CONTEO de acuerdo al valor de la carta.
+
+    La función debe retornar una cadena de caracteres con el conteo actual y las cadenas: "Apostar" (si el conteo es positivo) o "Esperar" si el conteo es cero o negativo.
+
+    El conteo actual y la decisión del jugador (Apostar o Esperar) deben estar separados por un espacio
+
+    */
+
+    var conteo = 0;
+    var mensaje;
+    
+    function ingresaCarta (carta){
+        
+        switch (carta){
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+                conteo = conteo + 1;
+                break;
+            case 7:
+            case 8:
+            case 9:
+                conteo = conteo + 0;
+                break;
+            case 10:
+            case "J":
+            case "Q":
+            case "K":
+            case "A":
+                conteo = conteo - 1;
+                break;
+            default:
+                conteo = "Carta ingresada no identificada o indefinida";
+        }       
+        if (conteo > 0){
+            mensaje = "Apostar!";
+        } else {
+            mensaje = "Esperar!"
+        }
+
+        return conteo + " " + mensaje;
+        }
+    
+console.log(ingresaCarta(2));
+console.log(ingresaCarta(3));
+console.log(ingresaCarta(7));
+console.log(ingresaCarta("K"));
+console.log(ingresaCarta("A"));
+ 
+    
+</script>
